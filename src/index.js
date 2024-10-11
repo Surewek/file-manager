@@ -37,6 +37,7 @@ try {
         case 'up':
           currentPath = await up(currentPath);
 
+          rl.setPrompt(messages.getCurrentDirectoryMessage(currentPath));
           rl.prompt()
           break;
         case 'cd':

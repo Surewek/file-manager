@@ -1,9 +1,15 @@
-async function up(currentPath, commandArguments) {
-  try {
+import path from 'path';
+import errors from '../data/error-messages.js';
 
-  } catch (error) {
-      process.stderr.write(error.message);
-  }
+async function up(currentPath) {
+    try {
+        currentPath = path.resolve(currentPath, '..');
+
+        return currentPath;
+    } catch (error) {
+        process.stderr.write(errors.operationFailedMessage);
+    }
+
 };
 
 export default up;
