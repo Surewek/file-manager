@@ -43,6 +43,7 @@ try {
         case 'cd':
           currentPath = await cd(currentPath, commandArguments);
 
+          rl.setPrompt(messages.getCurrentDirectoryMessage(currentPath));
           rl.prompt()
           break;
         case 'ls':

@@ -1,6 +1,6 @@
 const errors = {
-  invalidInputMessage: 'Invalid input',
-  operationFailedMessage: 'Operation failed',
+  invalidInputMessage: 'Invalid input\n',
+  operationFailedMessage: 'Operation failed\n',
 };
 
 export default errors;
