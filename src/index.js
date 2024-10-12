@@ -58,7 +58,6 @@ try {
           break;
         case 'cat':
           await cat(currentPath, commandArguments);
-          rl.prompt()
 
           break;
         case 'rn':

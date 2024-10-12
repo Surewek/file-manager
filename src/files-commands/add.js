@@ -1,7 +1,6 @@
 import path from 'path';
 import isExists from '../utils/exist-checker.js';
 import fs from 'fs/promises';
-import messages from '../data/messages.js';
 import errors from '../data/error-messages.js';
 
 async function add(currentPath, commandArguments) {
@@ -22,7 +21,6 @@ async function add(currentPath, commandArguments) {
 
     await fs.writeFile(targetPath, '');
 
-    process.stdout.write(messages.getCurrentDirectoryMessage(currentPath));
   } catch (error) {
     process.stderr.write(error.message);
   }

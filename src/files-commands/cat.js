@@ -30,7 +30,7 @@ async function cat(currentPath, commandArguments) {
     rl.on('line', line => line);
 
     rl.on('close', async () => {
-      process.stdout.write(messages.getCurrentDirectoryMessage(currentPath));
+      process.stdout.write('\n' + messages.getCurrentDirectoryMessage(currentPath));
     });
 
   } catch (error) {
