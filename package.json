@@ -1,0 +1,20 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "File",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Surewek/file-manager.git"
+  },
+  "author": "Vitaly Vegera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Surewek/file-manager/issues"
+  },
+  "homepage": "https://github.com/Surewek/file-manager#readme"
+}
