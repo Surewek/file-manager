@@ -1,8 +1,56 @@
+import { createBrotliDecompress } from 'zlib';
+import { createReadStream, createWriteStream } from 'fs';
+import path from 'path';
+import isExists from '../utils/exist-checker.js';
+import errors from '../data/error-messages.js';
+import { lstat } from 'fs/promises';
+
 async function decompress(currentPath, commandArguments) {
   try {
+    const argumentsCount = commandArguments.length;
+
+    if (argumentsCount !== 2) {
+      throw new Error(errors.invalidInputMessage);
+    }
+
+    const [source, dest] = commandArguments;
+
+    const sourcePath = path.resolve(currentPath, source);
+    const targetPath = path.resolve(currentPath, dest);
+
+    let destPath = targetPath;
+
+    const isSourcePathExists = await isExists(sourcePath);
+
+
+    if (!isSourcePathExists) {
+      throw new Error(errors.invalidInputMessage);
+    }
+
+    const sourceStat = await lstat(sourcePath);
+    const isSourceFile = sourceStat.isFile();
+
+    if (!isSourceFile) {
+      throw new Error(errors.invalidInputMessage);
+    }
+
+    const isTargetPathExists = await isExists(targetPath);
+
+    if (isTargetPathExists) {
+      throw new Error(errors.invalidInputMessage);
+    }
+
+    const brotli = createBrotliDecompress();
+
+    const sourceStream = createReadStream(sourcePath);
+    const destStream = createWriteStream(destPath);
+
+    sourceStream
+      .pipe(brotli)
+      .pipe(destStream)
 
   } catch (error) {
-      process.stderr.write(error.message);
+    process.stderr.write(error.message);
   }
 };
 
